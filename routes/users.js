@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router(); 
+const data = require('../data.json');
 
-
-router.get('/users', (req, res) => {
+router.get('/', (req, res) => {
     res.send('User List');
 });
 
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 })
 
 router.route('/:id').get((req, res) => {
-    console.log(req.user);
+    res.send(req.user);
     res.send(`Get User With ID ${req.params.id}`); 
 }).put((req, res) => {
     res.send(`Update User With ID ${req.params.id}`);
@@ -24,9 +24,9 @@ router.route('/:id').get((req, res) => {
 });
 
 
-const users = [{ name: "peep"}, { name: "athena"}]
+
 router.param("id", (req, res, next, id) => {
-    req.user = users[id]
+    req.user = data[id];
     next();
 })
 
