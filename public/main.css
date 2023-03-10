@@ -7,3 +7,10 @@ html {
 body {
     color: whitesmoke;
 }
+
+h1 {
+    padding: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
