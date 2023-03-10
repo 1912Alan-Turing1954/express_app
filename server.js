@@ -2,7 +2,7 @@ const express = require('express');
 const userRouter = require('./routes/users');
 const app = express();
 
-app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 app.get('/', logger, (req, res) => {
     console.log("Online");

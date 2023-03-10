@@ -26,7 +26,7 @@ router.route('/:id').get((req, res) => {
 
 
 router.param("id", (req, res, next, id) => {
-    req.user = data[id];
+    req.user = data[id % 7];
     next();
 })
 
