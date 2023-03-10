@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 })
 
 router.route('/:id').get((req, res) => {
-    res.send(req.user);
+    console.log(req.user);
     res.send(`Get User With ID ${req.params.id}`); 
 }).put((req, res) => {
     res.send(`Update User With ID ${req.params.id}`);
