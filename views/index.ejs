@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged-in</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header>
+        <em><h1>Welcome <%= name %></h1></em>
+    </header>
+    <div class="main">
+        <div class="main-container">
+            <div class="data">
+                <p>
+                    <em> Account Info; </em> 
+                    <br>username: <%= name %>
+                    <br>email: <%= email %>
+                    <br>password: <%= password %>
+                </p>
+                <a href="/data"><button class="data-btn">Data</button></a>
+            </div>
+            <form action="/logout?_method=DELETE" method="POST">
+                <CENTER>
+                    <button type="submit"><h4>Log Out</h4></button>
+                </CENTER>
+            </form> 
+            
+        </div>
+    </div>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: #333237;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .data {
+            border: 1px solid white;
+            padding: 1em;
+            margin: 0.5em;
+            padding-bottom: 2em;
+        }
+        
+        .data button {
+            text-decoration: none;
+            outline: none;
+            border: none;
+            padding: 10px;
+            border-radius: 1em;
+            
+        }
+
+        header {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            background: #605D58;
+            color: white;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container {
+            display: inline-block;
+            color: white;
+        }
+
+        form button {
+            text-decoration: none;
+            outline: none;
+            color: black;
+            margin: 0.5em;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 1.2em;
+            border: none;
+            background: white;
+        }
+
+        p {
+            text-align: left;
+        }
+    </style>
+</body>
+</html>
