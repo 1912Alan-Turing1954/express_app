@@ -8,24 +8,20 @@ router.get('/', checkAuthenticated, (req, res) => {
 })
 
 router.get('/data', (req, res) => {
-    fs.readFile(__dirname + '/' + 'data.json', "utf8", (err, data) => {
+    fs.readFile('./data.json', "utf8", (err, data) => {
         if (err) {
             res.send("File read failed:", err);
             return;
         }
-        res.end(data);
-        console.log(data);
+        // console.log(data);
+        // res.send(req.parse(data));
+        res.send(data);
     });
 });
 
 router.get('/data/:id', (req, res) => {
-    res.send(req.data);
+    res.send(data[req.params.id]);
 })
-
-router.param('id', (req, res, next, id) =>{
-    req.data = data[id % 2];
-    next();
-})  
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
