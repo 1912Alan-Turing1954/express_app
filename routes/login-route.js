@@ -8,12 +8,13 @@ router.get('/', checkAuthenticated, (req, res) => {
 })
 
 router.get('/data', (req, res) => {
-    fs.readFile('./data.json', "utf8", (err, data) => {
+    fs.readFile(__dirname + '/' + 'data.json', "utf8", (err, data) => {
         if (err) {
             res.send("File read failed:", err);
             return;
         }
-        res.send(data.toString());
+        res.end(data);
+        console.log(data);
     });
 });
 
