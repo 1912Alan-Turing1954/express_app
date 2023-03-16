@@ -2,16 +2,37 @@ const express = require('express');
 const app = express();
 
 app.use(express.static("views"));
+app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
 
+const users = [];
+
 app.get('/', logger, (req, res) => {
-    res.render("index");
+    res.redirect('/login');
 });
+
+app.get('/login', logger, (req, res) => {
+    res.render('login');
+})
+
+app.get('/register', logger, (req, res) => {
+
+})
+
+app.post('/register', logger, (req, res) => {
+
+})
+
+app.post('/login', logger, (req, res) => {
+
+})
 
 function logger(req, res, next) {
     console.log(req.originalUrl);
     next();
 }
+
+
 
 function isAuth(req, res, next) {
     const password = req.body.password;
