@@ -5,7 +5,6 @@ app.use(express.static("views"));
 app.set('view engine', 'ejs');
 
 app.get('/', logger, (req, res) => {
-    console.log("Online");
     res.render("index");
 });
 
@@ -24,5 +23,6 @@ function isAuth(req, res, next) {
     }
 }
 
-app.listen(3000); 
+app.listen(3000);
+console.log('Server listening on http://localhost:3000') 
 
