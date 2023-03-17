@@ -1,49 +1,24 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose')
 
-app.use(express.static("views"));
-app.use(express.urlencoded({ extended: false }))
-app.set('view engine', 'ejs');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Database'))
 
-const users = [];
+// app.use(express.static("views"));
+// app.use(express.urlencoded({ extended: false }))
+// app.set('view engine', 'ejs');
+app.use(express.json());
 
-app.get('/', logger, (req, res) => {
-    res.redirect('/login');
+const router = require('./routes/route')
+app.use('/route', router);
+
+app.listen(3000, () => {
+    console.log('Server started on http://localhost:3000') 
 });
 
-app.get('/login', logger, (req, res) => {
-    res.render('login');
-})
-
-app.get('/register', logger, (req, res) => {
-
-})
-
-app.post('/register', logger, (req, res) => {
-
-})
-
-app.post('/login', logger, (req, res) => {
-
-})
-
-function logger(req, res, next) {
-    console.log(req.originalUrl);
-    next();
-}
-
-
-
-function isAuth(req, res, next) {
-    const password = req.body.password;
-    if (user.password === password) {
-        next();
-    } else {
-        res.status(401);
-        res.send('Access forbidden');
-    }
-}
-
-app.listen(3000);
-console.log('Server listening on http://localhost:3000') 
 
