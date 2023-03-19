@@ -26,4 +26,4 @@ passport.deserializeUser((id, done) => {
 })
 }
 
-module.exports = initialize
+module.exports = initialize;
